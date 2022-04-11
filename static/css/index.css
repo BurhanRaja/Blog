@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+
+/* *************** Landing Page Front ************* */
+.landing-all{
+    background-color: rgba(84, 205, 253, 0.46);
+    height: 100%;
+    width: 100%;
+}
+.landing-title-image{
+    display: flex;
+    padding: 6% 2%;
+}
+.land-title{
+    position: relative;
+    margin: auto 6vw auto 4vw;
+    padding: 1vh 2vw;
+}
+.land-title p{
+    font-size: 65px;
+    font-family: 'Bangers', cursive;
+}
+.land-title p span{
+    font-size: 35px;
+    font-family: 'Staatliches', cursive;
+}
+.carousel-caption{
+    background-color: rgba(0, 0, 0, 0.637);
+}
+.carousel-item{
+    transition: transform 1s ease, opacity 0.3s ease-out;
+}
+.carousel{
+    width: 30%;
+}
+.img-1{
+    border-radius: 10px;
+}
+
+
+
+/* **************** Recent Posts ************* */
+.recent-post-title{
+    margin: 10vh 0vw 0vh 0vw;
+    text-align: center;
+}
+.recent-post-title p{
+    font-size: 50px;
+    font-family: 'Staatliches', cursive;
+}
+.post-cards-container{
+    justify-content: center;
+}
+.read-more-btn:hover{
+    background-color: #ff0000;
+    border: 2px solid #ff0000;
+}
+.post-cards-container{
+    display: flex;
+}
+.post-cards-container .card{
+    margin: 4vh 4vw 4vh 4vw;
+    width: 18rem;
+}
+.card img{
+    height: 230px;
+    width: auto;
+}
+
+/* **************** Categories Blog Page **************** */
+.diff-blog{
+    margin-top: 50px;
+}
+
+/* ******* Cards ******** */
+.category-title{
+    margin: 6vh 0vw 10vh 0vw;
+    text-align: center;
+}
+.category-title{
+    font-size: 50px;
+    font-family: 'Staatliches', cursive;
+}
+.card-1{
+    display: flex;
+    margin: 30px;
+    justify-content: center;
+    background-color: #daffd6;
+    border-radius: 10px;
+}
+.card-img-1{
+    padding: 10px;
+    margin: 0% 2%;
+}
+.card-img-1 img{
+    height: 400px;
+    width: auto;
+}
+.text-1{
+    padding: 20px 2vw 20px 2vw;
+    margin: 3% 3% 3% 3%;
+}
+.text-1 p:nth-child(1) {
+    font-size: 40px;
+    font-family: 'Abril Fatface', cursive;
+    margin: 10px 1vw 15px 1vw;
+    color: #161152;
+}
+.text-1 p:nth-child(2){
+    font-size: 20px;
+    margin: 10px 1vw 15px 1vw;
+}
+.read{
+    margin: 10px 1vw 15px 1vw;
+}
+.read-more{
+    padding: 15px;
+    font-size: 13px;
+    background-color: #00aeff;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+}
+.read-more:hover{
+    background-color: #ff0000;
+    cursor: pointer;
+}
+.bx-right-arrow-alt{
+    font-weight: 800;
+    margin: 7px;
+    font-family: 'DM Serif Text', serif;
+}
+
+
+/* ******************* Footer ***************** */
+.footer-card{
+    text-align: center;
+}
+.card-body ul {
+    justify-content: center;
+}
+.card-body ul li{
+    list-style: none;
+}
+.card-body ul li a{
+    text-decoration: none;
+    color: lightslategray;
+    /* font-size: 15px; */
+}
+.list-cat-nav{
+    display: flex;
+    justify-content: center;
+}
+.top-btn{
+    position: absolute;
+    top: 12vh;
+    right: 4vw;
+    margin: 2vw;
+}
+.top-btn:hover{
+    background-color: #ff0000;
+    border: 2px solid #ff0000;
+}
+
+
+/* Responsiveness */
+
+/* **************** Maximum = 980px ***************** */
+
+@media only screen and (max-width:1200px) {
+
+    /* Landing Page Front */
+    .land-title{
+        margin: auto 7vw auto 5vw;
+    }
+    .land-title p{
+        font-size: 40px;
+    }
+    .land-title p span{
+        font-size: 25px;
+    }
+
+    /* Recent */
+    .recent-post-title p{
+        font-size: 40px;
+    }
+
+    /* Categories Card */
+    .category-title{
+        margin: 6vh 0vw 7vh 0vw;
+        font-size: 40px;
+    }
+    .card-img-1 img{
+        height: 30vh;
+    }
+    .text-1 p:nth-child(1) {
+        font-size: 35px;
+    }
+    .text-1 p:nth-child(2){
+        font-size: 18px;
+    }
+    .read-more{
+        padding: 1vw;
+    }
+}
+
+
+/* **************** Maximum = 800px ***************** */
+
+@media only screen and (max-width:800px) {
+
+    /* Landing Page Front */
+    .land-title{
+        margin: auto 7vw auto 5vw;
+    }
+    .land-title p{
+        font-size: 35px;
+    }
+    .land-title p span{
+        font-size: 25px;
+    }
+
+    /* Recent */
+    .recent-post-title{
+        margin: 6vh 0vw 0vh 0vw;
+    }
+    .post-cards-container .card{
+        margin: 2vh 3vw 2vh 3vw;
+    }
+    .recent-post-title p{
+        font-size: 30px;
+    }
+    .post-cards-container .card-body{
+        font-size: 12px;
+    }
+    .post-cards-container .card-body a{
+        padding: 1vw;
+        font-size: 12px;
+    }
+
+    /* Categories Card */
+    .category-title{
+        margin: 7vh 0vw 5vh 0vw;
+        font-size: 30px;
+    }
+    .card-img-1 img{
+        height: 25vh;
+    }
+    .card-img-1{
+        padding: 10px;
+        margin: 0% 2%;
+    }
+    .text-1{
+        padding: 20px 2vw 20px 2vw;
+        margin: 2% 2% 2% 2%;
+    }
+    .text-1 p:nth-child(1) {
+        font-size: 32px;
+    }
+    .text-1 p:nth-child(2){
+        font-size: 16px;
+    }
+    .read-more{
+        padding: 1vw;
+    }
+}
+
+/* **************** Maximum = 500px ***************** */
+
+@media only screen and (max-width:500px) {
+
+    /* Landing Page Front */
+    .landing-title-image{
+        display: block;
+        text-align: center;
+        padding: 6% 2%;
+    }
+    .carousel{
+        width: 50%;
+        margin: 0% auto;
+    }
+    .land-title p{
+        font-size: 30px;
+    }
+    .land-title p span{
+        font-size: 25px;
+    }
+
+
+    /* Recent */
+    .post-cards-container{
+        display: block;
+        text-align: center;
+        margin: 0% 10%;
+    }
+    .post-cards-container .card{
+        width: auto;
+        margin: 4vh 0px;
+    }
+    .post-cards-container .card-body a{
+        padding: 2vw;
+        font-size: 15px;
+    }
+    .post-cards-container .card-body{
+        font-size: 15px;
+    }
+
+
+    /* Categories Card */
+    .card-1{
+        display: block;
+        text-align: center;
+    }
+    .category-title{
+        margin: 7vh 0vw 5vh 0vw;
+        font-size: 30px;
+    }
+    .card-img-1 img{
+        height: 20vh;
+    }
+    .text-1 p:nth-child(1) {
+        font-size: 30px;
+    }
+    .text-1 p:nth-child(2){
+        font-size: 15px;
+    }
+    .read-more{
+        font-size: 12px;
+        padding: 1.5vw;
+    }
+}
+
+
+/* **************** Maximum = 400px ***************** */
+
+@media only screen and (max-width:400px) {
+   
+
+    /* Landing Page Front */
+
+    .carousel{
+        width: 60%;
+        margin: 0% auto;
+    }
+    .land-title p{
+        font-size: 25px;
+    }
+    .land-title p span{
+        font-size: 20px;
+    }
+
+
+    /* Recent */
+    .post-cards-container{
+        display: block;
+        text-align: center;
+        margin: 0% 15%;
+    }
+    .post-cards-container .card{
+        width: auto;
+        margin: 4vh 0px;
+    }
+    .card-body a{
+        padding: 2vw;
+        font-size: 15px;
+    }
+
+
+    /* Categories Card */
+    .category-title{
+        margin: 7vh 0vw 5vh 0vw;
+        font-size: 30px;
+    }
+    .text-1 p:nth-child(1) {
+        font-size: 25px;
+    }
+}
+
+
+/* **************** Maximum = 340px ***************** */
+
+@media only screen and (max-width:340px) {
+   
+
+    /* Landing Page Front */
+
+    .carousel{
+        width: 60%;
+        margin: 0% auto;
+    }
+    .land-title p{
+        font-size: 20px;
+    }
+    .land-title p span{
+        font-size: 15px;
+    }
+
+
+    /* Recent */
+    .post-cards-container{
+        display: block;
+        text-align: center;
+        margin: 0% 15%;
+    }
+    .post-cards-container .card{
+        width: auto;
+        margin: 4vh 0px;
+    }
+    .card-body a{
+        padding: 2vw;
+        font-size: 15px;
+    }
+}
+

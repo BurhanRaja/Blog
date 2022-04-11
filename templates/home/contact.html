@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact me{% endblock title %}
+
+
+{% block body %}
+
+<link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
+      
+<style>
+    .contact-title{
+        text-align: center;
+        margin: 6% 0%;
+    }
+    .contact-title p{
+        font-size: 50px;
+    }
+</style>
+
+        <div class="contact-title">
+            <p>Contact Me</p>
+        </div>
+
+        <div class="container mb-3">
+            <form method="post" action="/contact/">
+                {% csrf_token %}
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="name" id="floatingInput" placeholder="Your Name">
+                    <label for="floatingInput">Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-floating">
+                    <textarea class="form-control" name="content" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Reason to contact me</label>
+                </div>
+                <div class="form-floating mb-5 my-3 text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+{% endblock body %}

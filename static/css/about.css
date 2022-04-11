@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/* ************ Main *********** */
+.main{
+    margin-top: 40px;
+}
+.about-container{
+    display: flex;
+}
+.image-text{
+    height: 100%;
+    height: 100%;
+    width: auto;
+    background-color: #4ae6ff;
+    margin: 16vh 4vw 0vh 5vw;
+    text-align: center;
+}
+.image-text img{
+    height: 380px;
+    width: auto;
+    padding: 2vh 3vw 0px 3vw;
+}
+.name{
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Bowlby One', cursive;
+    margin: 0px;
+    position: relative;
+    bottom: 8vh;
+}
+.name p:nth-child(2) {
+    margin-top: -20px;
+}
+.text{
+    padding: 10px 4vw 10px 1vw;
+    margin: 15vh 2vw auto;
+}
+
+
+/* Introduction */
+.intro span{
+    font-size: 25px;
+    font-family: 'Fugaz One', cursive;
+    color: #161152;
+}
+.intro p{
+    line-height: 1.5;
+    font-size: 18px;
+    font-family: 'Roboto Slab', serif;
+}
+
+
+
+/* Social Media handles */
+.media{
+    text-align: center;
+    margin: 4vw;
+}
+.follow p{
+    font-size: 20px;
+    font-family: 'Fugaz One', cursive;
+}
+.linked-in{
+    background-color: white;
+    padding: 5px;
+    border: none;
+    margin: 10px;
+}
+.linked-in a{
+    color: #003eb3;
+    font-size: 40px;
+}
+.github{
+    background-color: white;
+    padding: 5px;
+    border: none;
+    margin: 10px;
+}
+.github a{
+    color: black;
+    font-size: 40px;
+}
+
+
+/* Email */
+.connect{
+    margin-top: 20px;
+}
+.connect p{
+    font-size: 20px;
+    color:#1d1b31;
+    font-family: 'Fugaz One', cursive;
+}
+.connect p span{
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* Responsiveness */
+@media only screen and (max-width:1000px){
+    .intro p{
+        font-size: 16px;
+    }
+    .image-text img{
+        height: 340px;
+    }
+    .name{
+        font-size: 40px;
+        bottom: 6vh;
+    }
+}
+
+@media only screen and (max-width:810px){
+    .intro p{
+        font-size: 15px;
+    }
+    .image-text img{
+        height: 330px;
+    }
+    .name{
+        font-size: 40px;
+        bottom: 5vh;
+    }
+}
+
+@media only screen and (max-width:630px){
+    .about-container{
+        display: block;
+    }
+    .text{
+        text-align: center;
+        margin: 6vh 2vw;
+    }
+    .intro p{
+        font-size: 15px;
+    }
+    .image-text{
+        margin: 20% 14% 5% 14%;
+    }
+    .image-text img{
+        height: 330px;
+    }
+    .name{
+        font-size: 40px;
+        bottom: 5vh;
+    }
+}
+
+@media only screen and (max-width:420px){
+    .intro p{
+        font-size: 14px;
+    }
+    .image-text{
+        margin: 20% 12% 5% 12%;
+    }
+    .image-text img{
+        height: 300px;
+    }
+    .name{
+        font-size: 35px;
+        bottom: 4vh;
+    }
+    .connect p {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width:320px){
+
+    .intro p{
+        font-size: 13px;
+    }
+    .image-text{
+        margin: 20% 12% 5% 12%;
+    }
+    .image-text img{
+        height: 270px;
+    }
+    .name{
+        font-size: 30px;
+        bottom: 4vh;
+    }
+    .connect p {
+        font-size: 15px;
+    }
+}

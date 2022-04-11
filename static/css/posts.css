@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap');
+
+
+/* Front */
+.program-front{
+    background-color: #b7ddff;
+}
+.program-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-program{
+    width: 30%;
+    margin: 5% 4%;
+}
+.image-program img{
+    border-radius: 20px;
+}
+.program-title{
+    margin: 3%;
+    padding: 1%;
+}
+.program-title p:nth-child(1){
+    font-size: 60px;
+    font-family: 'Luckiest Guy', cursive;
+}
+.program-title p:nth-child(2){
+    font-size: 20px;
+    font-family: 'Sawarabi Gothic', sans-serif;
+}
+.search-program-blog{
+    position: relative;
+    bottom: 3vh;
+    justify-content: center;
+    padding: 5%;
+    margin: 0% 5%;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px grey;
+    background-color: white;
+}
+.search-program-blog input{
+    width: 60vw;
+    padding: 1%;
+    font-weight: 700;
+}
+
+/* ********** Featured Blogs ********** */
+.featured{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    margin: 3% auto;
+}
+.featured-post-container{
+    justify-content: center;
+}
+.card-feature-image{
+    height: 350px;
+    width: 100%;
+}
+
+/* ************ Quotes ********** */
+.quotes{
+    text-align: center;
+    margin: 3% 4%;
+    font-size: 50px;
+}
+.bxs-quote-left{
+    position: relative;
+    right: 30vw;
+}
+.bxs-quote-right{
+    position: relative;
+    left: 30vw;
+}
+
+/* Blog Posts */
+.blogs-title{
+    text-align: center;
+    margin: 3% 5%;
+}
+.blogs-title p{
+    font-size: 50px;
+    font-weight: 700;
+}
+.posts-part-all{
+    display: flex;
+}
+.posts-card-container{
+    margin: 4% 19%;
+}
+.post-card{
+    width: 60vw;
+    border-left: none;
+    border-right: none;
+}
+.post-card .card-title{
+    font-weight: 700;
+}
+.post-image{
+    height: 200px;
+    width: auto;
+}

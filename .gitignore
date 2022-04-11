@@ -1,0 +1,6 @@
+blogenv/
+db.sqlite
+.env
+__pycache__/
+mindblogging/__pycache__/
+blog/__pycache__/

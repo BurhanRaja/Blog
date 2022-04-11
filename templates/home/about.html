@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}About me{% endblock title %}
+
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+   
+    <div class="about-container">
+        
+        <div class="image-text">
+            <div class="name">
+                <p>Burhanuddin</p>
+                <p>Raja</p>
+            </div>
+            <img src="{% static 'Images/Burhan_prev_ui.png' %}" alt="">
+        </div>
+
+        
+        <div class="text">
+            <div class="intro">
+                <span>Introduction:-</span>
+
+                <p>Myself Burhanuddin Raja. I am from Ahmedabad-380007, Gujarat, India. I completed my bachelors in 2021-22. I did my bachelors in Business Administartion from GLS University, Ahmedabad, Gujarat.</p>
+
+                <p>I am a tech enthusiast, a passionate reader, an artist, a foodie and an explorer of new subjects and topics. Although I did my Bachelors in Business Administration, I want to become a <b>Software Developer</b>. I am aslo into space and business studies. My dream is to work with the brilliant minds in Software industry and also astronomy & space exploration if I can and learn as many things about and in the world, space & myself.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <hr class="mx-5">
+
+    <div class="media">
+        <div class="follow">
+            <p>Connect with me on:-</p>
+        </div>
+        <button class="linked-in"><a href="https://www.linkedin.com/in/burhanuddin-raja-261b1617b/"><i class='bx bxl-linkedin-square'></i></a></button>
+        <button class="github"><a href="https://github.com/BurhanRaja"><i class='bx bxl-github'></i></a></button>
+        <div class="or">
+            <p>--OR--</p>
+        </div>
+        <div class="connect">
+            <p>Email me :- <span>mails4burhan@gmail.com</span></p>
+        </div>
+    </div>
+{% endblock body %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Log In{% endblock title %}
+
+{% block body %}
+{% load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+<link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'css/log-in.css' %}">
+
+<div class="log-in-container justify-content-evenly align-items-center">
+
+    <div class="image-form">
+        <img src="{% static 'Images/Login-signup.png' %}" class="img-fluid log-sign-image" alt="">
+    </div>
+
+    <div class="title-form bg-light p-5">
+        <p>Welcome Back</p>
+        <div class="redirect-log-in d-grid gap-1">
+            <button type="submit" class="btn btn-outline-primary my-3 d-flex justify-content-center"><i class='bx bxl-google'></i>Log-in with Google</button>
+        </div>
+        <form action="" class="">
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Email</label>
+                <input type="email" class="form-control" id="formGroupExampleInput2">
+            </div>
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Password</label>
+                <input type="password" class="form-control" id="formGroupExampleInput2">
+            </div>
+            <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+            </div>
+            <div class="text-center">
+                <p class="mx-3"><a href="#" class="fs-6">Forgot Password?</a></p>
+                <button type="submit" class="btn btn-primary my-2">Log-in</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{% endblock body %}

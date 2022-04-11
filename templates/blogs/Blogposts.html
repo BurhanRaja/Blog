@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}{{allCat.category_name}}{% endblock title %}
+
+{% block body %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/posts.css' %}">
+
+
+    <!-- Busienss Front All -->
+    <div class="program-front">
+        <div class="program-container">
+            
+            <!-- Business page title -->
+            <div class="program-title">
+                <p>{{allCat.category_name}}</p>
+                <p>{{allCat.description}}</p>
+              </div>
+  
+              <!-- Image -->
+              <div class="image-program">
+                <img src={{allCat.image.url}} class="img-fluid" alt="...">
+              </div>
+        </div>
+        <!-- Business-container End-->
+      </div>
+      <!-- Business-front End-->
+  
+      <!-- Search -->
+      <div class="search-program-blog d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </div>
+
+      <div class="quotes">
+        <i class='bx bxs-quote-left'></i>
+         <p>{{allCat.qoute}}</p>
+        <i class='bx bxs-quote-right'></i>
+      </div>
+
+      <div class="blogs-title">
+        <p>Blog Posts</p>
+        <hr class="mx-5">
+      </div>
+  
+      <div class="posts-card-container">
+  
+        {% for ps in page_obj %}
+        <div class="card post-card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{ps.image.url}}" class="img-fluid post-image rounded" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ps.title}}</h5>
+                <p class="card-text">{{ps.content|slice:"100"}}...</p>
+                <div class="read-btn my-2">
+                  <a class="btn btn-primary" href="post/{{ps.slug}}" role="button">Read More</a>
+                </div>
+                <p class="card-text"><small class="text-muted">Posted on {{ps.created_on|date:"d M, Y"}}</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    
+      {% if page_obj.has_other_pages %}
+      <div class="pagination-numbers">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+
+            <li class="page-item">
+              {% if page_obj.has_previous %}
+              <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+              {% endif %}
+            </li>
+
+            <li class="page-item"><a class="page-link" href="#">{{page_obj.number}} of {{ page_obj.paginator.num_pages }}</a></li>
+
+            <li class="page-item">
+              {% if page_obj.has_next %}
+              <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+              {% endif %}
+            </li>
+          </ul>
+        </nav>
+      </div>
+      {% endif %}
+
+
+{% endblock body %}

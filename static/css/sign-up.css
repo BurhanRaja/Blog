@@ -1,0 +1,95 @@
+.log-sign-image{
+    height: auto;
+    width: 30vw;
+}
+.form-control{
+    width: 30vw;
+}
+button a{
+    text-decoration: none;
+}
+.sign-up-container{
+    margin: 5% 0% 5% 0%;
+    display: flex;
+}
+.title-form p{
+    font-size: 1.8rem;
+}
+
+.redirect-sign-up button i{
+    font-size: 1.5rem;
+    margin: 2px 0.5vw;
+}
+
+/* Responsiveness */
+@media only screen and (max-width:1000px){
+    .form-control{
+        width:35vw;
+    }
+}
+
+@media only screen and (max-width:830px){
+    .sign-up-container{
+        display: block;
+    }
+    .form-control{
+        width:40vw;
+    }
+    .log-sign-image{
+        display: none;
+    }
+    .title-form{
+        margin: 1% 25%;
+    }
+
+}
+@media only screen and (max-width:750px){
+    
+    .sign-up-container{
+        display: block;
+    }
+    .form-control{
+        width:45vw;
+    }
+    .log-sign-image{
+        display: none;
+    }
+    .title-form{
+        margin: 1% 20%;
+    }
+}
+@media only screen and (max-width:500px){
+    
+    .sign-up-container{
+        display: block;
+    }
+    .form-control{
+        width:60vw;
+    }
+    .log-sign-image{
+        display: none;
+    }
+    .title-form{
+        margin: 1% 12%;
+    }
+}
+@media only screen and (max-width:400px){
+    .title-form p{
+        font-size: 1.4rem;
+    }
+    label{
+        font-size: 0.8rem;
+    }
+    .sign-up-container{
+        display: block;
+    }
+    .form-control{
+        width:70vw;
+    }
+    .log-sign-image{
+        display: none;
+    }
+    .title-form{
+        margin: 0px;
+    }
+}

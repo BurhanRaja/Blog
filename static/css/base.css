@@ -1,0 +1,134 @@
+.navbar-toggler:focus{
+    outline: none;
+    box-shadow: none;
+}
+.navbar-toggler:hover{
+    background-color: rgb(199, 216, 224);
+}
+
+#username{
+    color: white;
+    font-weight: 700;
+}
+#username:hover{
+    cursor: pointer;
+}
+
+/* ******************* Footer ***************** */
+.footer-card{
+    text-align: center;
+}
+.card-body ul {
+    justify-content: center;
+}
+.card-body ul li{
+    list-style: none;
+}
+.card-body ul li a{
+    text-decoration: none;
+    color: lightslategray;
+    /* font-size: 15px; */
+}
+.list-cat-nav{
+    display: flex;
+    justify-content: center;
+}
+.top-btn{
+    position: absolute;
+    top: 12vh;
+    right: 4vw;
+    margin: 2vw;
+}
+.top-btn:hover{
+    background-color: #ff0000;
+    border: 2px solid #ff0000;
+}
+
+/* Responsiveness */
+
+/* **************** Maximum = 980px ***************** */
+
+@media only screen and (max-width:980px) {
+
+    /* Landing Page Front */
+    .land-title{
+        margin: auto 7vw auto 5vw;
+    }
+    .land-title p{
+        font-size: 40px;
+    }
+    .land-title p span{
+        font-size: 25px;
+    }
+
+    /* Recent */
+    .recent-post-title p{
+        font-size: 40px;
+    }
+
+    /* Categories Card */
+    .category-title{
+        margin: 6vh 0vw 7vh 0vw;
+        font-size: 40px;
+    }
+    .card-img-1 img{
+        height: 30vh;
+    }
+    .text-1 p:nth-child(1) {
+        font-size: 35px;
+    }
+    .text-1 p:nth-child(2){
+        font-size: 18px;
+    }
+    .read-more{
+        padding: 1vw;
+    }
+}
+
+
+/* **************** Maximum = 800px ***************** */
+
+@media only screen and (max-width:800px) {
+
+    /* Footer */
+    .top-btn{
+        top: 10vh;
+    }
+}
+
+/* **************** Maximum = 500px ***************** */
+
+@media only screen and (max-width:500px) {
+
+    /* Footer */
+    .top-btn{
+        top: 16vh;
+        right: 3vw;
+    }
+}
+
+
+/* **************** Maximum = 400px ***************** */
+
+@media only screen and (max-width:400px) {
+
+    /* Footer */
+    .top-btn{
+        top: 16vh;
+        right: 3vw;
+    }
+}
+
+
+/* **************** Maximum = 340px ***************** */
+
+@media only screen and (max-width:340px) {
+
+    /* Footer */
+    .top-btn{
+        top: 26vh;
+        right: 3vw;
+        font-size: 6px;
+    }
+}
+
