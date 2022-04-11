@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.paginator import Paginator
+from django.contrib import messages
 
-from blog.models import Categorie, Post
+from blog.models import Categorie, Contact, Post
 
 # Create your views here.
 def home(request):
@@ -18,6 +19,18 @@ def about(request):
     return render(request, 'home/about.html')
 
 def contact(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        content = request.POST['content']
+
+        if len(name) < 2 or len(email) < 3 or len(content) < 4:
+            messages.error(request, 'Please fill the form correctly.')
+        else:
+            contact = Contact(name=name, email=email, reason=content)
+            contact.save()
+            messages.success(request, 'Your response has been successfully submitted.')
+
     return render(request, 'home/contact.html')
 
 def signup(request):
@@ -27,8 +40,12 @@ def login(request):
     return render(request, 'home/log-in.html')
 
 def blogposts(request, slug):
+    try:
+        allCat = Categorie.objects.get(slug=slug)
+    except Categorie.DoesNotExist:
+        allCat = None
     # Getting the catgeories by slug
-    allCat = Categorie.objects.get(slug=slug)
+    # allCat = Categorie.objects.get(slug=slug)
     # Getting the blog post by slug of category defined above
     post_list = Post.objects.filter(post_category = allCat)
 
