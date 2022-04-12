@@ -1,0 +1,58 @@
+/* Main Post */
+
+.post-title{
+    text-align: center;
+    font-weight: 700;
+    margin: 5% 2% 3% 2%;
+}
+
+.cd-container{
+    margin: 1% 1% 1% 6%;
+}
+
+.category{
+    color: #0087ff;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.post-content {
+    margin: 1% 11%;
+    font-size: 17px;
+}
+
+/* You also might like */
+.recent{
+    margin: 4% 0%;
+}
+.post-might-like{
+    font-weight: 500;
+    margin: 0% 6%;
+}
+.card-might-like{
+    margin: 3% auto;
+}
+
+/* Comments */
+.comment-container{
+    margin: 5% 10%;
+}
+
+.submit-comment {
+    text-align: center;
+}
+
+.comment{
+    margin: 1% 1% 4% 13%;
+}
+
+.card-user-comment{
+    margin: 1% auto;
+}
+.comm-date{
+    color: grey;
+}
+.reply-btn{
+    color: grey;
+    font-weight: 600;
+}

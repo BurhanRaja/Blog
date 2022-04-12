@@ -40,12 +40,11 @@ def login(request):
     return render(request, 'home/log-in.html')
 
 def blogposts(request, slug):
+    # Getting the catgeories by slug
     try:
         allCat = Categorie.objects.get(slug=slug)
     except Categorie.DoesNotExist:
         allCat = None
-    # Getting the catgeories by slug
-    # allCat = Categorie.objects.get(slug=slug)
     # Getting the blog post by slug of category defined above
     post_list = Post.objects.filter(post_category = allCat)
 
