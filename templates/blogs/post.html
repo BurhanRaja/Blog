@@ -1,24 +1,19 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'base.html' %}
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="post.css">
+{% block title %}Post{% endblock title %}
 
-    <title>Post</title>
-  </head>
-  <body>
-    <h1 class="post-title">Blog name</h1>
+    {% block body %}
+
+    {% load static %}
+    <link rel="stylesheet" href={% static 'css/post.css' %}>
+    <h1 class="post-title">{{post_list.title}}</h1>
 
     <hr class="mx-5">
 
     <div class="cd-container">
         <div class="date-time">
-            <p>date here</p>
+            <p>{{post_list.created_on}}</p>
         </div>
         <div class="views">
             <p> <b>1</b> views</p>
@@ -28,13 +23,11 @@
     <div class="post-container">
 
     <div class="post-image">
-        <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmxvZ3xlbnwwfHwwfHw%3D&w=1000&q=80" class="img-fluid m-5 rounded" alt="...">
+        <img src={{post_list.image.url}} class="img-fluid rounded" alt="...">
     </div>
 
     <div class="post-content">
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id corrupti deleniti autem aliquid quos maxime vel, iste ipsum, eos alias facilis! Corporis consequatur pariatur adipisci veniam sit aspernatur voluptas repellendus, qui autem doloribus et eligendi consequuntur quos distinctio culpa odio harum natus. Velit pariatur, commodi in quia voluptas nisi molestiae.</p>
-        <br>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis ipsum autem, provident, unde quis magni debitis iste dignissimos facere quo quod soluta exercitationem amet corporis ratione nobis inventore sapiente recusandae, possimus voluptatibus eius iure necessitatibus eveniet? Cum, dolorem reiciendis amet omnis quidem corrupti eaque nostrum ea doloremque earum commodi obcaecati illo tempore eveniet asperiores alias recusandae id enim blanditiis! Distinctio.</p>
+        {{post_list.content}}
     </div>
 
     </div>
@@ -102,8 +95,8 @@
 
     </div>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+
+    {% endblock body %}
   </body>
 </html>

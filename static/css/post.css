@@ -15,7 +15,10 @@
     font-weight: 600;
     font-size: 20px;
 }
-
+.post-image{
+    text-align: center;
+    margin: 30px auto;
+}
 .post-content {
     margin: 1% 11%;
     font-size: 17px;

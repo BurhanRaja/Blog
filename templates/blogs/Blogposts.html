@@ -26,12 +26,6 @@
         <!-- Business-container End-->
       </div>
       <!-- Business-front End-->
-  
-      <!-- Search -->
-      <div class="search-program-blog d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </div>
 
       <div class="quotes">
         <i class='bx bxs-quote-left'></i>
@@ -57,7 +51,7 @@
                 <h5 class="card-title">{{ps.title}}</h5>
                 <p class="card-text">{{ps.content|slice:"100"}}...</p>
                 <div class="read-btn my-2">
-                  <a class="btn btn-primary" href="post/{{ps.slug}}" role="button">Read More</a>
+                  <a class="btn btn-primary" href="/post/{{ps.slug}}/" role="button">Read More</a>
                 </div>
                 <p class="card-text"><small class="text-muted">Posted on {{ps.created_on|date:"d M, Y"}}</small></p>
               </div>

@@ -13,6 +13,12 @@
 #username:hover{
     cursor: pointer;
 }
+.search-form{
+    margin: 2px;
+}
+.search-inp{
+    padding: 0px;
+}
 
 /* ******************* Footer ***************** */
 .footer-card{

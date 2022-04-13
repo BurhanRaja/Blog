@@ -33,6 +33,9 @@ def contact(request):
 
     return render(request, 'home/contact.html')
 
+def search(request):
+    return render(request, 'home/search.html')
+
 def signup(request):
     return render(request, 'home/sign-up.html')
 
@@ -59,6 +62,9 @@ def blogposts(request, slug):
     context = {'allCat':allCat, 'posts':post_list, 'page_obj':page_obj} 
     return render(request, 'blogs/Blogposts.html', context)
 
-def post(request):
-    return HttpResponse("This is a Post.")
-    
+def post(request, slug):
+
+    post_list = Post.objects.filter(slug=slug).first()
+
+    context = {'post_list' : post_list}
+    return render(request, 'blogs/post.html', context)
