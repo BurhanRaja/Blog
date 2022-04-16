@@ -1,0 +1,15 @@
+.post-card-container{
+    margin: 4% 19%;
+}
+.post-card{
+    width: 60vw;
+    border-left: none;
+    border-right: none;
+}
+.post-card .card-title{
+    font-weight: 700;
+}
+.post-image{
+    height: 200px;
+    width: auto;
+}

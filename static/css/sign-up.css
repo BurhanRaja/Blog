@@ -2,7 +2,7 @@
     height: auto;
     width: 30vw;
 }
-.form-control{
+.email-inp input, .pass-inp input, .user-inp input{
     width: 30vw;
 }
 button a{
@@ -23,7 +23,7 @@ button a{
 
 /* Responsiveness */
 @media only screen and (max-width:1000px){
-    .form-control{
+    .email-inp input, .pass-inp input, .user-inp input{
         width:35vw;
     }
 }
@@ -32,7 +32,7 @@ button a{
     .sign-up-container{
         display: block;
     }
-    .form-control{
+    .email-inp input, .pass-inp input, .user-inp input{
         width:40vw;
     }
     .log-sign-image{
@@ -48,7 +48,7 @@ button a{
     .sign-up-container{
         display: block;
     }
-    .form-control{
+    .email-inp input, .pass-inp input, .user-inp input{
         width:45vw;
     }
     .log-sign-image{
@@ -63,7 +63,7 @@ button a{
     .sign-up-container{
         display: block;
     }
-    .form-control{
+    .email-inp input, .pass-inp input, .user-inp input{
         width:60vw;
     }
     .log-sign-image{
@@ -83,7 +83,7 @@ button a{
     .sign-up-container{
         display: block;
     }
-    .form-control{
+    .email-inp input, .pass-inp input, .user-inp input{
         width:70vw;
     }
     .log-sign-image{

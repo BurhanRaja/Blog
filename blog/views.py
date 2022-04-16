@@ -34,7 +34,12 @@ def contact(request):
     return render(request, 'home/contact.html')
 
 def search(request):
-    return render(request, 'home/search.html')
+    query = request.GET['query']
+    allPosts = Post.objects.filter(title__icontains = query)
+    if not allPosts:
+        return HttpResponse("The post does not exists.")
+    context = {"allPosts":allPosts}
+    return render(request, 'home/search.html', context)
 
 def signup(request):
     return render(request, 'home/sign-up.html')
