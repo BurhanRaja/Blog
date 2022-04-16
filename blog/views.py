@@ -7,7 +7,7 @@ from blog.models import Categorie, Contact, Post
 
 # Create your views here.
 def home(request):
-    # Gtting all the objects of Categorie class
+    # Getting all the objects of Categorie class
     allCategory = Categorie.objects.all()
     # Getting the recently created posts
     nowPosts = Post.objects.order_by('-created_on')
@@ -35,10 +35,16 @@ def contact(request):
 
 def search(request):
     query = request.GET['query']
-    allPosts = Post.objects.filter(title__icontains = query)
-    if not allPosts:
-        return HttpResponse("The post does not exists.")
-    context = {"allPosts":allPosts}
+    if len(query) > 78:
+        allPosts = Post.objects.none()
+    else:
+        allPostsTitle = Post.objects.filter(title__icontains = query)
+        allPostsContent = Post.objects.filter(content__icontains = query)
+        allPosts = allPostsTitle|allPostsContent
+    if allPosts.count() == 0:
+        messages.warning(request, 'No search results found. Please refine your query.')
+
+    context = {"allPosts":allPosts, "query":query}
     return render(request, 'home/search.html', context)
 
 def signup(request):
@@ -63,8 +69,7 @@ def blogposts(request, slug):
     # Getting the page and storing it in page_obj
     page_obj = paginator.get_page(page_number)
     
-    
-    context = {'allCat':allCat, 'posts':post_list, 'page_obj':page_obj} 
+    context = {'allCat':allCat, 'page_obj':page_obj} 
     return render(request, 'blogs/Blogposts.html', context)
 
 def post(request, slug):
