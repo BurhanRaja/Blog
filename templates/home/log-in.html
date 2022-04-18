@@ -17,21 +17,17 @@ integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jI
 
     <div class="title-form bg-light p-5">
         <p>Welcome Back</p>
-        <div class="redirect-log-in d-grid gap-1">
+        {% comment %} <div class="redirect-log-in d-grid gap-1">
             <button type="submit" class="btn btn-outline-primary my-3 d-flex justify-content-center"><i class='bx bxl-google'></i>Log-in with Google</button>
-        </div>
+        </div> {% endcomment %}
         <form action="" class="">
             <div class="mb-3 email-inp">
-                <label for="formGroupExampleInput2" class="form-label">Email</label>
-                <input type="email" class="form-control" id="formGroupExampleInput2">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email">
             </div>
             <div class="mb-3 pass-inp">
-                <label for="formGroupExampleInput2" class="form-label">Password</label>
-                <input type="password" class="form-control" id="formGroupExampleInput2">
-            </div>
-            <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password">
             </div>
             <div class="text-center">
                 <p class="mx-3"><a href="#" class="fs-6">Forgot Password?</a></p>

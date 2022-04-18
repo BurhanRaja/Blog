@@ -1,7 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 from blog.models import Categorie, Contact, Post
 
@@ -48,6 +49,21 @@ def search(request):
     return render(request, 'home/search.html', context)
 
 def signup(request):
+    if request.method == 'POST':
+        username = request.POST['user']
+        email = request.POST['email']
+        password = request.POST['password']
+
+        if len(username) > 15:
+            messages.error(request, "Username must be under 15 characters.")
+        
+        if username.isalnum():
+            messages.error(request, "Username must contain alphabets and numbers.")
+
+        my_user = User.objects.create_user(username, email, password)
+        my_user.save()
+        messages.success(request, "Your blog account has been created Successfully!")
+        return redirect('home')
     return render(request, 'home/sign-up.html')
 
 def login(request):

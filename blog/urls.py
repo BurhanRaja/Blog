@@ -1,5 +1,6 @@
 from django.urls import path
 from blog import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -10,4 +11,5 @@ urlpatterns = [
     path('log-in/', views.login, name='login'),
     path('<str:slug>/', views.blogposts, name='blogposts'),
     path('post/<str:slug>/', views.post, name='post'),
+    path('change-password/', auth_views.PasswordChangeView.as_view()),
 ]
