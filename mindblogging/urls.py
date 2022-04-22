@@ -18,6 +18,10 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
+admin.site.site_header = "Mind-Blogging Admin Panel"
+admin.site.site_title = "Mind-Blogging Admin"
+admin.site.index_title = "Welcome to Mind-Blogging"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
