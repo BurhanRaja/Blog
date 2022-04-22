@@ -7,9 +7,9 @@ urlpatterns = [
     path('aboutme/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('search/', views.search, name='search'),
-    path('sign-up/', views.signup, name='signup'),
-    path('log-in/', views.login, name='login'),
+    path('signup/', views.signup, name='signup'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
     path('<str:slug>/', views.blogposts, name='blogposts'),
     path('post/<str:slug>/', views.post, name='post'),
-    path('change-password/', auth_views.PasswordChangeView.as_view()),
 ]

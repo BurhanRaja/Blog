@@ -1,5 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.contrib.auth import authenticate
+from django.contrib.auth import logout as auth_logout
+from django.contrib.auth import login as auth_login
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -50,7 +53,7 @@ def search(request):
 
 def signup(request):
     if request.method == 'POST':
-        username = request.POST['user']
+        username = request.POST['userName']
         email = request.POST['email']
         password = request.POST['password']
 
@@ -58,7 +61,8 @@ def signup(request):
             messages.error(request, "Username must be under 15 characters.")
         
         if username.isalnum():
-            messages.error(request, "Username must contain alphabets and numbers.")
+            messages.error(request, "Username must contain alphabets and numbers. Sign Up Again")
+            return redirect('home')
 
         my_user = User.objects.create_user(username, email, password)
         my_user.save()
@@ -67,7 +71,26 @@ def signup(request):
     return render(request, 'home/sign-up.html')
 
 def login(request):
+    if request.method == 'POST':
+        username = request.POST['userName']
+        password = request.POST['password']
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            auth_login(request, user)
+            messages.success(request, "Successfully Logged In!")
+            return redirect('home')
+        else:
+            messages.error(request, "Invalid Credentials!")
+
     return render(request, 'home/log-in.html')
+
+def logout(request):
+    
+    auth_logout(request)
+    messages.success(request, "Succesfully Logged In!")
+    return redirect('home')
 
 def blogposts(request, slug):
     # Getting the catgeories by slug

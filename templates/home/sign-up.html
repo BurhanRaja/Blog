@@ -17,14 +17,13 @@ integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jI
 
     <div class="title-form bg-light p-5">
         <p>Create Account</p>
-        {% comment %} <div class="redirect-sign-up d-grid gap-1">
-            <button type="submit" class="btn btn-outline-primary my-3 d-flex justify-content-center"><i class='bx bxl-google'></i>Sign-up with Google</button>
-        </div> {% endcomment %}
-    <form action="/sign-up/" method="post">
+        
+    <form action="/signup/" method="post">
       {% csrf_token %}
         <div class="mb-3 user-inp">
-            <label for="user" class="form-label">Username</label>
-            <input type="text" class="form-control" id="user" name="user" required>
+            <label for="userName" class="form-label">Username</label>
+            <small id="emailHelp" class="form-text text-muted">(Username should contain letters and numbers)</small>
+            <input type="text" class="form-control" id="userName" name="userName" required>
           </div>
           <div class="mb-3 email-inp">
             <label for="email" class="form-label">Email</label>
@@ -35,7 +34,6 @@ integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jI
             <input type="password" class="form-control" id="password" name="password" required>
           </div>
         <div class="btns text-center">
-            <p class="mx-3"><a href="/change-password/" class="fs-6">Forgot Password?</a></p>
             <button type="submit" class="btn btn-primary my-2">Sign-up</button>
         </div>
     </form>

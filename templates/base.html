@@ -52,16 +52,19 @@
                   <button class="btn btn-outline-success btn-sm p-2" type="submit">Search</button>
                 </form>
               </li>
+                {% if user.is_authenticated %}
+                <li class="nav-link mx-2" id="username">Welcome <b>{{request.user}}</b></li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="/sign-up"><button type="button" class="btn btn-success btn-sm rounded-3">Create Account</button></a>
+                    <a class="nav-link" href="/logout/"><button type="button" class="btn btn-success btn-sm rounded-3">Log-out</button></a>
+                </li>
+                {% else %}
+                <li class="nav-item mx-2">
+                  <a class="nav-link" href="/signup"><button type="button" class="btn btn-success btn-sm rounded-3">Create Account</button></a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="/log-in"><button type="button" class="btn btn-success btn-sm rounded-3">Log-in</button></a>
+                  <a class="nav-link" href="/login"><button type="button" class="btn btn-success btn-sm rounded-3">Log-in</button></a>
                 </li>
-                <li class="nav-link mx-2 d-none" id="username">Username</li>
-                <li class="nav-item mx-2 d-none">
-                    <a class="nav-link" href="#"><button type="button" class="btn btn-success btn-sm rounded-3">Log-out</button></a>
-                </li>
+                {% endif %}
 
                 </ul>
             </div>
