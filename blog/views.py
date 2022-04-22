@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 
 from blog.models import Categorie, Contact, Post
 
-# Create your views here.
+# Home HTMl
 def home(request):
     # Getting all the objects of Categorie class
     allCategory = Categorie.objects.all()
@@ -37,6 +37,8 @@ def contact(request):
 
     return render(request, 'home/contact.html')
 
+
+# Authentication APIs
 def search(request):
     query = request.GET['query']
     if len(query) > 78:
@@ -92,6 +94,8 @@ def logout(request):
     messages.success(request, "Succesfully Logged In!")
     return redirect('home')
 
+
+# Blog HTML
 def blogposts(request, slug):
     # Getting the catgeories by slug
     try:

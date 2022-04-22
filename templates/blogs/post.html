@@ -9,14 +9,9 @@
     <link rel="stylesheet" href={% static 'css/post.css' %}>
     <h1 class="post-title">{{post_list.title}}</h1>
 
-    <hr class="mx-5">
-
     <div class="cd-container">
         <div class="date-time">
             <p>{{post_list.created_on}}</p>
-        </div>
-        <div class="views">
-            <p> <b>1</b> views</p>
         </div>
     </div>
 
@@ -34,41 +29,6 @@
 
     <hr class="m-5">
 
-    <div class="recent">
-        <div class="post-might-like">
-            <h3>You also might like</h3>
-        </div>
-        <div class="card-container d-flex">
-
-        <div class="card card-might-like" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        <div class="card card-might-like" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        <div class="card card-might-like" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-
-    </div>
-
-    <hr class="mx-5">
     <div class="comment-container">
         <div class="form-floating">
             <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>

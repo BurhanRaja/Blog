@@ -1,23 +1,21 @@
 /* Main Post */
 
 .post-title{
-    text-align: center;
     font-weight: 700;
-    margin: 5% 2% 3% 2%;
+    margin: 5% 2% 1% 10%;
 }
 
 .cd-container{
-    margin: 1% 1% 1% 6%;
+    margin: 1% 1% 1% 10%;
 }
 
-.category{
-    color: #0087ff;
-    font-weight: 600;
-    font-size: 20px;
-}
 .post-image{
     text-align: center;
     margin: 30px auto;
+}
+.post-image img{
+    height:auto;
+    width: 50%;
 }
 .post-content {
     margin: 1% 11%;
