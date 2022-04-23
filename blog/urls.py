@@ -3,6 +3,8 @@ from blog import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    path('postcomment/', views.postcomment, name='postcomment'),
+    path('postreply/', views.postreply, name='postreply'),
     path('', views.home, name='home'),
     path('aboutme/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),

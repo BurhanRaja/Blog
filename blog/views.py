@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.models import User
 
-from blog.models import Categorie, Contact, Post
+from blog.models import Categorie, Contact, Post, Comment
 
 # Home HTMl
 def home(request):
@@ -118,6 +118,23 @@ def blogposts(request, slug):
 def post(request, slug):
 
     post_list = Post.objects.filter(slug=slug).first()
+    comments = Comment.objects.filter(post = post_list)
 
-    context = {'post_list' : post_list}
+    context = {'post_list' : post_list, 'comments':comments}
     return render(request, 'blogs/post.html', context)
+
+def postcomment(request):
+    if request.method == "POST":
+        comment = request.POST.get('commenttext')
+        user = request.user
+        postSno = request.POST.get('postSno')
+        post = Post.objects.get(sno=postSno)
+
+        comment = Comment(comment=comment, user=user, post=post)
+        comment.save()
+        messages.success(request, 'Your Comment has been successfully added.')
+
+    return redirect(f'/post/{post.slug}')
+
+def postreply(request):
+    return HttpResponse("Reply Posted")

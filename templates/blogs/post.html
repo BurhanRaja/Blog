@@ -3,60 +3,97 @@
 
 {% block title %}Post{% endblock title %}
 
-    {% block body %}
+{% block body %}
 
-    {% load static %}
-    <link rel="stylesheet" href={% static 'css/post.css' %}>
-    <h1 class="post-title">{{post_list.title}}</h1>
+{% load static %}
+<link rel="stylesheet" href={% static 'css/post.css' %}>
+<h1 class="post-title">{{post_list.title}}</h1>
 
-    <div class="cd-container">
-        <div class="date-time">
-            <p>{{post_list.created_on}}</p>
-        </div>
+<div class="cd-container">
+  <div class="date-time">
+    <p>{{post_list.created_on}}</p>
+  </div>
+</div>
+
+<div class="post-container">
+
+  <div class="post-image">
+    <img src={{post_list.image.url}} class="img-fluid rounded" alt="...">
+  </div>
+
+  <div class="post-content">
+    {{post_list.content}}
+  </div>
+
+</div>
+
+<hr class="m-5">
+
+<div class="comment-container">
+  <form action="/postcomment/" method="POST" class="form-floating">
+    {% csrf_token %}
+    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+      style="height: 100px" name="commenttext"></textarea>
+      <label for="floatingTextarea2">Add a Comment</label>
+      <input type="hidden" name="postSno" value="{{post_list.sno}}" >
+    <div class="submit-comment m-3">
+      <button type="submit" class="btn btn-primary">Comment</button>
     </div>
+</form>
 
-    <div class="post-container">
+  <div class="comment">
+    <h3>Comments (count)</h3>
+  </div>
 
-    <div class="post-image">
-        <img src={{post_list.image.url}} class="img-fluid rounded" alt="...">
-    </div>
+  <div class="card w-75 card-user-comment">
+    <div class="card-body">
+      <strong class="card-title">Username</strong>
+      <span class="comm-date"> date</span>
+      <p class="card-text">comment</p>
 
-    <div class="post-content">
-        {{post_list.content}}
-    </div>
+      {% comment %} Start {% endcomment %}
+      <button class="btn m-2 reply-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseView"
+        aria-expanded="false" aria-controls="collapseView">
+        View 1 Replies
+      </button>
+      {% comment %} End {% endcomment %}
 
-    </div>
 
-    <hr class="m-5">
-
-    <div class="comment-container">
-        <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-            <label for="floatingTextarea2">Add a Comment</label>
-          </div>
-
-          <div class="submit-comment">
-            <a href="#"><button type="button" class="btn btn-primary m-3">Comment</button></a>
-          </div>
-
-          <div class="comment">
-            <h3>Comments (count)</h3>
-          </div>
-
-          <div class="card w-75 card-user-comment">
-            <div class="card-body">
-              <strong class="card-title">Username</strong>
-              <span class="comm-date">  date</span> 
-              <p class="card-text">comment</p>
-              <button type="button" class="btn btn-sm reply-btn">View 1 Reply</button>
-              <button type="button" class="btn btn-sm reply-btn">Reply</button>
+      {% comment %} Start {% endcomment %}
+      <button class="btn m-2 reply-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample">
+        Reply
+      </button>
+      <div class="collapse" id="collapseExample">
+        <form action="/postreply" method="POST">
+          <div class="card card-body">
+            <input type="text" class="form-control m-2" aria-label="Username" aria-describedby="addon-wrapping" name="reply" id="reply">
+            <div class="d-grid gap-2 col-6 mx-auto my-2">
+              <a class="btn btn-primary" href="#" role="button">Reply</a>
             </div>
           </div>
+        </form>
+      </div>
+      {% comment %} End {% endcomment %}
+
+
+      {% comment %} View Replies collapse (Start) {% endcomment %}
+      <div class="collapse" id="collapseView">
+        <div class="card card-body">
+          <p><strong class="usernameComm">Username</strong><span class="comm-date"> date</span></p>
+          <p class="card-text">Reply to the Comment</p>
+        </div>
+      </div>
+      {% comment %} (End) {% endcomment %}
 
     </div>
+  </div>
+
+</div>
 
 
 
-    {% endblock body %}
-  </body>
+{% endblock body %}
+</body>
+
 </html>
