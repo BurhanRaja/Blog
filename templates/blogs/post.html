@@ -30,6 +30,7 @@
 <hr class="m-5">
 
 <div class="comment-container">
+  {% if user.is_authenticated %}
   <form action="/postcomment/" method="POST" class="form-floating">
     {% csrf_token %}
     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
@@ -40,16 +41,20 @@
       <button type="submit" class="btn btn-primary">Comment</button>
     </div>
 </form>
+{% else %}
+<p style="text-align:center;"><strong style="color:red;">Please Log-in to make a comment</strong></p>
+{% endif %}
 
   <div class="comment">
-    <h3>Comments (count)</h3>
+    <h3>Comments ({{comments.count}})</h3>
   </div>
 
+  {% for comment in comments %}
   <div class="card w-75 card-user-comment">
     <div class="card-body">
-      <strong class="card-title">Username</strong>
-      <span class="comm-date"> date</span>
-      <p class="card-text">comment</p>
+      <strong class="card-title">{{comment.user}}</strong>
+      <span class="comm-date">{{comment.timestamp|date:"M d, Y H:m"}}</span>
+      <p class="card-text">{{comment.comment}}</p>
 
       {% comment %} Start {% endcomment %}
       <button class="btn m-2 reply-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseView"
@@ -88,6 +93,7 @@
 
     </div>
   </div>
+  {% endfor %}
 
 </div>
 

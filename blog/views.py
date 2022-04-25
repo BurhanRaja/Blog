@@ -120,7 +120,7 @@ def post(request, slug):
     post_list = Post.objects.filter(slug=slug).first()
     comments = Comment.objects.filter(post = post_list)
 
-    context = {'post_list' : post_list, 'comments':comments}
+    context = {'post_list' : post_list, 'comments':comments, 'user':request.user}
     return render(request, 'blogs/post.html', context)
 
 def postcomment(request):
