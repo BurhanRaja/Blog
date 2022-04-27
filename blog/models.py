@@ -45,7 +45,7 @@ class Comment(models.Model):
     comment = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, related_name='+')
+    parent = models.ForeignKey('self',on_delete=models.CASCADE, null=True, related_name='+')
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:

@@ -130,11 +130,17 @@ def postcomment(request):
         postSno = request.POST.get('postSno')
         post = Post.objects.get(sno=postSno)
 
-        comment = Comment(comment=comment, user=user, post=post)
-        comment.save()
-        messages.success(request, 'Your Comment has been successfully added.')
+        parentSno = request.POST.get('parentSno')
+
+        if parentSno == "":
+            comment = Comment(comment=comment, user=user, post=post)
+            comment.save()
+            messages.success(request, 'Your Comment has been successfully added.')
+        else:
+            parent = Comment.objects.get(sno=parentSno)
+            comment = Comment(comment=comment, user=user, post=post, parent=parent)
+            comment.save()
+            messages.success(request, 'Your Reply has been successfully added.')
+
 
     return redirect(f'/post/{post.slug}')
-
-def postreply(request):
-    return HttpResponse("Reply Posted")

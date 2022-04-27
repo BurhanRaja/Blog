@@ -31,7 +31,7 @@
 
 <div class="comment-container">
   {% if user.is_authenticated %}
-  <form action="/postcomment/" method="POST" class="form-floating">
+  <form action="/postcomment/" method="post" class="form-floating">
     {% csrf_token %}
     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
       style="height: 100px" name="commenttext"></textarea>
@@ -57,36 +57,41 @@
       <p class="card-text">{{comment.comment}}</p>
 
       {% comment %} Start {% endcomment %}
-      <button class="btn m-2 reply-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseView"
-        aria-expanded="false" aria-controls="collapseView">
-        View 1 Replies
+      <button class="btn m-2 reply-btn btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseView{{comment.sno}}"
+        aria-expanded="false" aria-controls="collapseView{{comment.sno}}">
+        View {{parent.count}} Replies
       </button>
       {% comment %} End {% endcomment %}
 
 
       {% comment %} Start {% endcomment %}
-      <button class="btn m-2 reply-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-        aria-expanded="false" aria-controls="collapseExample">
+      <button class="btn m-2 reply-btn btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#replyBox{{comment.sno}}"
+        aria-expanded="false" aria-controls="replyBox{{comment.sno}}">
         Reply
       </button>
-      <div class="collapse" id="collapseExample">
-        <form action="/postreply" method="POST">
+      <div class="collapse" id="replyBox{{comment.sno}}">
+        
+        <form action="/postcomment/" method="post">
+          {% csrf_token %}
           <div class="card card-body">
-            <input type="text" class="form-control m-2" aria-label="Username" aria-describedby="addon-wrapping" name="reply" id="reply">
-            <div class="d-grid gap-2 col-6 mx-auto my-2">
-              <a class="btn btn-primary" href="#" role="button">Reply</a>
+            <input type="text" class="form-control m-2" aria-label="Username" aria-describedby="addon-wrapping" name="commenttext" id="reply">
+            <input type="hidden" name="parentSno" value="{{comment.sno}}">
+            <div class="submit-reply m-3">
+              <button class="btn btn-primary btn-sm" type="submit">Reply</button>
             </div>
           </div>
+          <input type="hidden" name="postSno" value="{{post_list.sno}}" >
         </form>
+      
       </div>
       {% comment %} End {% endcomment %}
 
 
       {% comment %} View Replies collapse (Start) {% endcomment %}
-      <div class="collapse" id="collapseView">
+      <div class="collapse" id="collapseView{{comment.sno}}">
         <div class="card card-body">
-          <p><strong class="usernameComm">Username</strong><span class="comm-date"> date</span></p>
-          <p class="card-text">Reply to the Comment</p>
+          <p><strong class="usernameComm">{{parent.user}}</strong><span class="comm-date">{{parent.timestamp|date:"M d, Y H:m"}}</span></p>
+          <p class="card-text">{{parent.comment}}</p>
         </div>
       </div>
       {% comment %} (End) {% endcomment %}
