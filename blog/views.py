@@ -118,7 +118,18 @@ def blogposts(request, slug):
 def post(request, slug):
 
     post_list = Post.objects.filter(slug=slug).first()
-    comments = Comment.objects.filter(post = post_list)
+    comments = Comment.objects.filter(post = post_list, parent=None)
+    replies = Comment.objects.filter(post = post_list).exclude(parent=None)
+    replyDict = {}
+    for reply in replies:
+        # If the serial no of reply is not present in the dictionary then give it a number and reply
+        if reply.sno not in replyDict.keys():
+            replyDict[reply.sno] = reply
+        else:
+            replyDict[reply.sno].append(reply)
+
+    # print(comments, replies)
+    print(replyDict)
 
     context = {'post_list' : post_list, 'comments':comments, 'user':request.user}
     return render(request, 'blogs/post.html', context)
