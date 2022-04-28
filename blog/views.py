@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate
 from django.contrib.auth import logout as auth_logout
@@ -6,6 +5,7 @@ from django.contrib.auth import login as auth_login
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.models import User
+from blog.templatetags import extras
 
 from blog.models import Categorie, Contact, Post, Comment
 
@@ -122,16 +122,16 @@ def post(request, slug):
     replies = Comment.objects.filter(post = post_list).exclude(parent=None)
     replyDict = {}
     for reply in replies:
-        # If the serial no of reply is not present in the dictionary then give it a number and reply
-        if reply.sno not in replyDict.keys():
-            replyDict[reply.sno] = reply
+        # If the serial no. of reply is not present in the dictionary then give it a list of reply
+        if reply.parent.sno not in replyDict.keys():
+            replyDict[reply.parent.sno] = [reply]
         else:
-            replyDict[reply.sno].append(reply)
+            replyDict[reply.parent.sno].append(reply)
 
     # print(comments, replies)
-    print(replyDict)
+    print(comments)
 
-    context = {'post_list' : post_list, 'comments':comments, 'user':request.user}
+    context = {'post_list' : post_list, 'comments':comments, 'user':request.user, 'replyDict':replyDict}
     return render(request, 'blogs/post.html', context)
 
 def postcomment(request):

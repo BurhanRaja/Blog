@@ -6,6 +6,8 @@
 {% block body %}
 
 {% load static %}
+{% load extras %}
+
 <link rel="stylesheet" href={% static 'css/post.css' %}>
 <h1 class="post-title">{{post_list.title}}</h1>
 
@@ -59,7 +61,7 @@
       {% comment %} Start {% endcomment %}
       <button class="btn m-2 reply-btn btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseView{{comment.sno}}"
         aria-expanded="false" aria-controls="collapseView{{comment.sno}}">
-        View {{parent.count}} Replies
+        View Replies
       </button>
       {% comment %} End {% endcomment %}
 
@@ -90,8 +92,10 @@
       {% comment %} View Replies collapse (Start) {% endcomment %}
       <div class="collapse" id="collapseView{{comment.sno}}">
         <div class="card card-body">
-          <p><strong class="usernameComm">{{parent.user}}</strong><span class="comm-date">{{parent.timestamp|date:"M d, Y H:m"}}</span></p>
-          <p class="card-text">{{parent.comment}}</p>
+          <p><strong class="usernameComm"></strong><span class="comm-date"></span></p>
+          {% for reply in replyDict|get_val:comment.sno %}
+          <p class="card-text">{{reply}}</p>
+          {% endfor %}
         </div>
       </div>
       {% comment %} (End) {% endcomment %}
