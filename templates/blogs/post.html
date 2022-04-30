@@ -1,7 +1,7 @@
 <!doctype html>
 {% extends 'base.html' %}
 
-{% block title %}Post{% endblock title %}
+{% block title %}Post | {{post_list.title}}{% endblock title %}
 
 {% block body %}
 
@@ -9,6 +9,8 @@
 {% load extras %}
 
 <link rel="stylesheet" href={% static 'css/post.css' %}>
+
+<!-- Post title -->
 <h1 class="post-title">{{post_list.title}}</h1>
 
 <div class="cd-container">
@@ -19,38 +21,51 @@
 
 <div class="post-container">
 
+<!-- Post image (Start) -->
   <div class="post-image">
     <img src={{post_list.image.url}} class="img-fluid rounded" alt="...">
   </div>
+<!--   Post image (End)  -->
 
+<!--   Post Content (Start)  -->
   <div class="post-content">
     {{post_list.content}}
   </div>
+<!--   Post Content (End)  -->
 
 </div>
 
 <hr class="m-5">
 
+<!--   Full Comment (Start)  -->
 <div class="comment-container">
+    Auth Comment 
   {% if user.is_authenticated %}
   <form action="/postcomment/" method="post" class="form-floating">
     {% csrf_token %}
-    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-      style="height: 100px" name="commenttext"></textarea>
-      <label for="floatingTextarea2">Add a Comment</label>
-      <input type="hidden" name="postSno" value="{{post_list.sno}}" >
+    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"
+      name="commenttext"></textarea>
+    <label for="floatingTextarea2">Add a Comment</label>
+    <input type="hidden" name="postSno" value="{{post_list.sno}}">
+    <input type="hidden" name="parentSno" value="{{comment.sno}}">
+
+<!--   Comment Btn (start)  -->
     <div class="submit-comment m-3">
       <button type="submit" class="btn btn-primary">Comment</button>
     </div>
-</form>
-{% else %}
-<p style="text-align:center;"><strong style="color:red;">Please Log-in to make a comment</strong></p>
-{% endif %}
+<!--   Comment Btn (End)  -->
+
+  </form>
+  {% else %}
+  <p style="text-align:center;"><strong style="color:red;">Please Log-in to post a comment</strong></p>
+  {% endif %}
+<!--   Auth Comment (End)  -->
 
   <div class="comment">
     <h3>Comments ({{comments.count}})</h3>
   </div>
 
+<!--   All Comments (Start)  -->
   {% for comment in comments %}
   <div class="card w-75 card-user-comment">
     <div class="card-body">
@@ -58,55 +73,62 @@
       <span class="comm-date">{{comment.timestamp|date:"M d, Y H:m"}}</span>
       <p class="card-text">{{comment.comment}}</p>
 
-      {% comment %} Start {% endcomment %}
-      <button class="btn m-2 reply-btn btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseView{{comment.sno}}"
-        aria-expanded="false" aria-controls="collapseView{{comment.sno}}">
+<!--   View Reply Btn (Start)  -->
+      <button class="btn m-2 reply-btn btn-sm" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseView{{comment.sno}}" aria-expanded="false" aria-controls="collapseView{{comment.sno}}">
         View Replies
       </button>
-      {% comment %} End {% endcomment %}
+<!--   View Reply Btn (End)  -->
 
 
-      {% comment %} Start {% endcomment %}
-      <button class="btn m-2 reply-btn btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#replyBox{{comment.sno}}"
-        aria-expanded="false" aria-controls="replyBox{{comment.sno}}">
+<!--   Post Replies (Start)  -->
+      {% if user.is_authenticated %}
+      <button class="btn m-2 reply-btn btn-sm" type="button" data-bs-toggle="collapse"
+        data-bs-target="#replyBox{{comment.sno}}" aria-expanded="false" aria-controls="replyBox{{comment.sno}}">
         Reply
       </button>
       <div class="collapse" id="replyBox{{comment.sno}}">
-        
         <form action="/postcomment/" method="post">
           {% csrf_token %}
           <div class="card card-body">
-            <input type="text" class="form-control m-2" aria-label="Username" aria-describedby="addon-wrapping" name="commenttext" id="reply">
+            <input type="text" class="form-control m-2" aria-label="Username" aria-describedby="addon-wrapping"
+              name="commenttext" id="reply">
             <input type="hidden" name="parentSno" value="{{comment.sno}}">
             <div class="submit-reply m-3">
               <button class="btn btn-primary btn-sm" type="submit">Reply</button>
             </div>
           </div>
-          <input type="hidden" name="postSno" value="{{post_list.sno}}" >
+          <input type="hidden" name="postSno" value="{{post_list.sno}}">
         </form>
-      
       </div>
-      {% comment %} End {% endcomment %}
+      {% else %}
+      <button class="btn m-2 reply-btn btn-sm diabled" type="button" data-bs-toggle="collapse"
+        data-bs-target="#replyBox{{comment.sno}}" aria-expanded="false" aria-controls="replyBox{{comment.sno}}">
+        Log-in to reply
+      </button>
+      {% endif %}
+<!--   Post Replies (End)  -->
 
 
-      {% comment %} View Replies collapse (Start) {% endcomment %}
-      <div class="collapse" id="collapseView{{comment.sno}}">
+<!--   View Replies collapse (Start)  -->
+      {% for reply in replyDict|get_val:comment.sno %}
+      <div class="collapse m-2" id="collapseView{{comment.sno}}">
         <div class="card card-body">
-          <p><strong class="usernameComm"></strong><span class="comm-date"></span></p>
-          {% for reply in replyDict|get_val:comment.sno %}
-          <p class="card-text">{{reply}}</p>
-          {% endfor %}
+          <p><strong class="usernameComm">{{reply.user.username}}</strong><span class="comm-date">
+              {{reply.timestamp}}</span></p>
+          <p class="card-text">{{reply.comment}}</p>
         </div>
       </div>
-      {% comment %} (End) {% endcomment %}
+      {% endfor %}
+<!-- View Replies collapse (End) -->
 
     </div>
   </div>
   {% endfor %}
+<!-- All Comments (Start) -->
 
 </div>
-
-
+<!-- Full Comment (Start) -->
 
 {% endblock body %}
 </body>
