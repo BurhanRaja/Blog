@@ -5,16 +5,13 @@ from django.contrib.auth import login as auth_login
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.models import User
-from blog.templatetags import extras
 
 from blog.models import Categorie, Contact, Post, Comment
 
 # Home HTMl
 def home(request):
-    # Getting all the objects of Categorie class
-    allCategory = Categorie.objects.all()
-    # Getting the recently created posts
-    nowPosts = Post.objects.order_by('-created_on')
+    allCategory = Categorie.objects.all() # Getting all the objects of Categorie class
+    nowPosts = Post.objects.order_by('-created_on') # Getting the recently created posts
 
     context = {'allCategory':allCategory, 'nowPosts':nowPosts}
     return render(request, 'home/index.html', context)
@@ -23,11 +20,13 @@ def about(request):
     return render(request, 'home/about.html')
 
 def contact(request):
+    # Performing the Post request for giving the information of the user
     if request.method == 'POST':
         name = request.POST['name']
         email = request.POST['email']
         content = request.POST['content']
 
+    # Checking the filled fields are according to given requirements or not  
         if len(name) < 2 or len(email) < 3 or len(content) < 4:
             messages.error(request, 'Please fill the form correctly.')
         else:
@@ -39,14 +38,18 @@ def contact(request):
 
 
 # Authentication APIs
+
 def search(request):
+    # Query, where all the search term will be given
     query = request.GET['query']
+
+    # Giving error if searched more than 78 keywords
     if len(query) > 78:
         allPosts = Post.objects.none()
     else:
         allPostsTitle = Post.objects.filter(title__icontains = query)
         allPostsContent = Post.objects.filter(content__icontains = query)
-        allPosts = allPostsTitle|allPostsContent
+        allPosts = allPostsTitle|allPostsContent # Merging the title and post in a variable so that both can be given for results during search
     if allPosts.count() == 0:
         messages.warning(request, 'No search results found. Please refine your query.')
 
@@ -54,14 +57,15 @@ def search(request):
     return render(request, 'home/search.html', context)
 
 def signup(request):
+    # Performing the Post request for signing up
     if request.method == 'POST':
         username = request.POST['userName']
         email = request.POST['email']
         password = request.POST['password']
 
+    # Some Restrictions for the user input
         if len(username) > 15:
             messages.error(request, "Username must be under 15 characters.")
-        
         if username.isalnum():
             messages.error(request, "Username must contain alphabets and numbers. Sign Up Again")
             return redirect('home')
@@ -73,12 +77,15 @@ def signup(request):
     return render(request, 'home/sign-up.html')
 
 def login(request):
+    # Performing the Post request for logging in
     if request.method == 'POST':
         username = request.POST['userName']
         password = request.POST['password']
 
+    # Authenticating
         user = authenticate(request, username=username, password=password)
 
+    # If not exist
         if user is not None:
             auth_login(request, user)
             messages.success(request, "Successfully Logged In!")
@@ -89,7 +96,7 @@ def login(request):
     return render(request, 'home/log-in.html')
 
 def logout(request):
-    
+    # Logging out
     auth_logout(request)
     messages.success(request, "Succesfully Logged In!")
     return redirect('home')
@@ -117,9 +124,10 @@ def blogposts(request, slug):
 
 def post(request, slug):
 
-    post_list = Post.objects.filter(slug=slug).first()
-    comments = Comment.objects.filter(post = post_list, parent=None)
-    replies = Comment.objects.filter(post = post_list).exclude(parent=None)
+    post_list = Post.objects.filter(slug=slug).first() # for slug
+    comments = Comment.objects.filter(post = post_list, parent=None) # for comment on particular post with no parent
+    replies = Comment.objects.filter(post = post_list).exclude(parent=None) # for comment on particular post with parent
+
     replyDict = {}
     for reply in replies:
         # If the serial no. of reply is not present in the dictionary then give it a list of reply
@@ -135,14 +143,15 @@ def post(request, slug):
     return render(request, 'blogs/post.html', context)
 
 def postcomment(request):
+    # Performing Post request to get the comments of the users
     if request.method == "POST":
         comment = request.POST.get('commenttext')
         user = request.user
         postSno = request.POST.get('postSno')
         post = Post.objects.get(sno=postSno)
-
         parentSno = request.POST.get('parentSno')
 
+        # If the parent is empty
         if parentSno == "":
             comment = Comment(comment=comment, user=user, post=post)
             comment.save()
@@ -152,6 +161,5 @@ def postcomment(request):
             comment = Comment(comment=comment, user=user, post=post, parent=parent)
             comment.save()
             messages.success(request, 'Your Reply has been successfully added.')
-
 
     return redirect(f'/post/{post.slug}')
