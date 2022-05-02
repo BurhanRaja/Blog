@@ -25,4 +25,5 @@ admin.site.index_title = "Welcome to Mind-Blogging"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
+    path('editor/', include('django_summernote.urls'))
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

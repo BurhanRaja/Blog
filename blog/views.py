@@ -136,9 +136,6 @@ def post(request, slug):
         else:
             replyDict[reply.parent.sno].append(reply)
 
-    # print(comments, replies)
-    print(comments)
-
     context = {'post_list' : post_list, 'comments':comments, 'user':request.user, 'replyDict':replyDict}
     return render(request, 'blogs/post.html', context)
 

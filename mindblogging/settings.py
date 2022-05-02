@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog'
+    'blog',
+    'django_summernote'
 ]
 
 MIDDLEWARE = [
@@ -129,8 +130,10 @@ STATICFILES_DIRS = [
 ]
 
 # Managing Media
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 MESSAGE_TAGS = {
     message.ERROR: 'danger'
