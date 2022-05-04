@@ -52,11 +52,11 @@
 <!-- Post Cards Container (start) -->
   <div class="post-cards-container">
     {% for recpost in nowPosts|slice:":3" %}
-    <div class="card">
+    <div class="card post-card">
       <img src="{{recpost.image.url}}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title h4">{{recpost.title|slice:"15"}}...</h5>
-        <p class="card-text">{{recpost.content|slice:"100"}}...</p>
+        <p class="card-text">{{recpost.content|slice:"150"|safe}}...</p>
         <p style="font-weight:700;">{{recpost.category}}</p>
         <a href="post/{{recpost.slug}}" class="btn btn-primary read-more-btn">Read more</a>
       </div>

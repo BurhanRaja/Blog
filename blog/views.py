@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate
 from django.contrib.auth import logout as auth_logout
@@ -160,3 +161,24 @@ def postcomment(request):
             messages.success(request, 'Your Reply has been successfully added.')
 
     return redirect(f'/post/{post.slug}')
+
+
+# Forget Password
+
+def password_reset(request):
+    email = "bro@gmail.com"
+    userEmail = User.objects.filter(email=email)
+    if userEmail.exists():
+        print("Yes the user exists")
+    else:
+        print("No")
+    return HttpResponse("Reset your password")
+
+def password_reset_done(request):
+    return HttpResponse("We've sent you an email to your email if valid")
+
+def password_reset_confirm(request):
+    return HttpResponse("Write your new password here")
+
+def password_reset_complete(request):
+    return HttpResponse("Your password has been changed")

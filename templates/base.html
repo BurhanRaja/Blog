@@ -55,23 +55,23 @@
               <form method="get" action="/search" class="d-flex search-form">
                 <input class="form-control me-2 search-inp px-2" type="search" placeholder="Search" aria-label="Search"
                   name="query" id="search">
-                <button class="btn btn-outline-success btn-sm p-2" type="submit">Search</button>
+                <button class="btn btn-outline-info btn-sm p-2" type="submit">Search</button>
               </form>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-link mx-2" id="username">Welcome <b>{{request.user}}</b></li>
             <li class="nav-item mx-2">
               <a class="nav-link" href="/logout/"><button type="button"
-                  class="btn btn-success btn-sm rounded-3">Log-out</button></a>
+                  class="btn btn-info btn-sm rounded-3">Log-out</button></a>
             </li>
             {% else %}
             <li class="nav-item mx-2">
-              <a class="nav-link" href="/signup"><button type="button" class="btn btn-success btn-sm rounded-3">Create
+              <a class="nav-link" href="/signup"><button type="button" class="btn btn-info btn-sm rounded-3">Create
                   Account</button></a>
             </li>
             <li class="nav-item mx-2">
               <a class="nav-link" href="/login"><button type="button"
-                  class="btn btn-success btn-sm rounded-3">Log-in</button></a>
+                  class="btn btn-info btn-sm rounded-3">Log-in</button></a>
             </li>
             {% endif %}
 

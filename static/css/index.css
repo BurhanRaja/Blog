@@ -68,6 +68,10 @@
     height: 230px;
     width: auto;
 }
+.post-card {
+    border:none;
+    box-shadow: 5px 5px 11px #f1f1f1;
+}
 
 /* **************** Categories Blog Page **************** */
 .diff-blog{
