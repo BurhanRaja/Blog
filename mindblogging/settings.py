@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
-    'django_summernote'
+    'tinymce',
+    'blog'
 ]
 
 MIDDLEWARE = [
@@ -143,3 +143,22 @@ MESSAGE_TAGS = {
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# TinyMCE
+TINYMCE_DEFAULT_CONFIG = {
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 20,
+    'selector': 'textarea',
+    'theme': 'silver',
+    'height': 656,
+    'plugins': '''
+            advlist autolink link image lists charmap print preview hr anchor pagebreak searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking table emoticons template paste help
+            ''',
+    'toolbar1': '''
+            undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify |  bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons | help|
+            ''',
+    'contextmenu': 'favs | file | edit | view | insert | format | tools | table | help',
+    'menubar':True,
+    'skin': "oxide-dark",
+    'content_css': "dark"
+}

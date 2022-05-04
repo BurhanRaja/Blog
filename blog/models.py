@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce import models as tinymce_models
 
 # Create your models here.
 
@@ -29,7 +30,7 @@ class Post(models.Model):
     sno = models.AutoField(primary_key = True)
     slug = models.CharField(max_length=200, unique=True)
     title = models.CharField(max_length=200, unique=True)
-    content = models.TextField()
+    content = tinymce_models.HTMLField()
     post_category = models.ForeignKey(Categorie, on_delete=models.CASCADE)
     image = models.ImageField(upload_to = "blog/images", default="")
     created_on = models.DateTimeField(auto_now_add = True)

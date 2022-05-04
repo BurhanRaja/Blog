@@ -7,7 +7,6 @@
 
 {% load static %}
 {% load extras %}
-{{ var|safe }}
 
 <link rel="stylesheet" href={% static 'css/post.css' %}>
 
@@ -29,8 +28,8 @@
 <!--   Post image (End)  -->
 
 <!--   Post Content (Start)  -->
-  <div class="post-content">
-    {{post_list.content}}
+  <div class="post-content" id="postcontent">
+    {{post_list.content|safe}}
   </div>
 <!--   Post Content (End)  -->
 
