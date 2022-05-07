@@ -6,11 +6,8 @@ from django.contrib.auth import login as auth_login
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
 
 from blog.models import Categorie, Contact, Post, Comment
-from config import settings
 
 # Home HTMl
 def home(request):
@@ -164,37 +161,3 @@ def postcomment(request):
             messages.success(request, 'Your Reply has been successfully added.')
 
     return redirect(f'/post/{post.slug}')
-
-
-# Forget Password
-
-def forgotpassword(request):
-
-    if request.method == 'POST':
-        passemail = request.POST['passemail']
-        userEmail = User.objects.filter(email=passemail)
-
-        if userEmail.exists():
-            context = {
-                'email':userEmail,
-                'protocol':'https' if request.is_secure() else 'http',
-                'domain': request.get_host()
-            }
-
-            html_message = render_to_string('auth/password-reset-email.html', context=context)
-            messageEmail = render_to_string('auth/password-reset-email.html', context=context)
-
-            send_mail(subject='Reset Password', message='Hello Bro', html_message=html_message, from_email=settings.email_host_user, recipient_list=[passemail], fail_silently=False)
-            messages.success(request, "You will recieve an email shortly.")
-            return redirect('home')
-        else:
-            messages.error(request, "You don't have an account on this blog.")
-            return redirect('home')
-
-    return render(request, 'auth/forget-password.html')
-
-def password_reset_confirm(request):
-    return HttpResponse("Write your new password here")
-
-def password_reset_complete(request):
-    return HttpResponse("Your password has been changed")

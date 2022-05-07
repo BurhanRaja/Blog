@@ -18,12 +18,7 @@ urlpatterns = [
     # Auth
     path('signup/', views.signup, name='signup'),
     path('login/', views.login, name='login'),
-    path('logout/', views.logout, name='logout'),
-    
-    # Forget Password
-    path('forgot-password/', views.forgotpassword, name='forgotpassword'),
-    path('password-reset-confirm/', views.password_reset_confirm, name='password_reset_confirm'),
-    path('password-reset-complete/', views.password_reset_complete, name='password_reset_complete'),
+    path('logout/', views.logout, name='logout'),     
     
     # Blog
     path('<str:slug>/', views.blogposts, name='blogposts'),
