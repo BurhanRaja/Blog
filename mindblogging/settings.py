@@ -133,8 +133,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
-
+# Messages 
 MESSAGE_TAGS = {
     message.ERROR: 'danger'
 }
@@ -144,7 +143,7 @@ MESSAGE_TAGS = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# TinyMCE
+# TinyMCE Text Editor
 TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
@@ -162,3 +161,12 @@ TINYMCE_DEFAULT_CONFIG = {
     'skin': "oxide-dark",
     'content_css': "dark"
 }
+
+
+# Email Backend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = settings.email_host
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = settings.email_host_user
+EMAIL_HOST_PASSWORD = settings.email_host_password

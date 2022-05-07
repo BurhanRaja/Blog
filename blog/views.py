@@ -6,8 +6,11 @@ from django.contrib.auth import login as auth_login
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 from blog.models import Categorie, Contact, Post, Comment
+from config import settings
 
 # Home HTMl
 def home(request):
@@ -75,7 +78,7 @@ def signup(request):
         my_user.save()
         messages.success(request, "Your blog account has been created Successfully!")
         return redirect('home')
-    return render(request, 'home/sign-up.html')
+    return render(request, 'auth/sign-up.html')
 
 def login(request):
     # Performing the Post request for logging in
@@ -94,7 +97,7 @@ def login(request):
         else:
             messages.error(request, "Invalid Credentials!")
 
-    return render(request, 'home/log-in.html')
+    return render(request, 'auth/log-in.html')
 
 def logout(request):
     # Logging out
@@ -165,17 +168,30 @@ def postcomment(request):
 
 # Forget Password
 
-def password_reset(request):
-    email = "bro@gmail.com"
-    userEmail = User.objects.filter(email=email)
-    if userEmail.exists():
-        print("Yes the user exists")
-    else:
-        print("No")
-    return HttpResponse("Reset your password")
+def forgotpassword(request):
 
-def password_reset_done(request):
-    return HttpResponse("We've sent you an email to your email if valid")
+    if request.method == 'POST':
+        passemail = request.POST['passemail']
+        userEmail = User.objects.filter(email=passemail)
+
+        if userEmail.exists():
+            context = {
+                'email':userEmail,
+                'protocol':'https' if request.is_secure() else 'http',
+                'domain': request.get_host()
+            }
+
+            html_message = render_to_string('auth/password-reset-email.html', context=context)
+            messageEmail = render_to_string('auth/password-reset-email.html', context=context)
+
+            send_mail(subject='Reset Password', message='Hello Bro', html_message=html_message, from_email=settings.email_host_user, recipient_list=[passemail], fail_silently=False)
+            messages.success(request, "You will recieve an email shortly.")
+            return redirect('home')
+        else:
+            messages.error(request, "You don't have an account on this blog.")
+            return redirect('home')
+
+    return render(request, 'auth/forget-password.html')
 
 def password_reset_confirm(request):
     return HttpResponse("Write your new password here")
