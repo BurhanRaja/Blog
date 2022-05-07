@@ -1,5 +1,5 @@
-blogenv/
 db.sqlite3
+blogenv/
 .env
 __pycache__/
 mindblogging/__pycache__/
