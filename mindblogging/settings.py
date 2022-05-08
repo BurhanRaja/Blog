@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 from django.contrib.messages import constants as message
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -158,3 +159,5 @@ TINYMCE_DEFAULT_CONFIG = {
     'skin': "oxide-dark",
     'content_css': "dark"
 }
+
+django_heroku.settings(locals())
