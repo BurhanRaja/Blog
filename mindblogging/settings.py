@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mind-blogging.herokuapp.com']
 
 
 # Application definition
@@ -160,6 +160,3 @@ TINYMCE_DEFAULT_CONFIG = {
     'skin': "oxide-dark",
     'content_css': "dark"
 }
-
-import django_heroku
-django_heroku.settings(locals())
