@@ -8,7 +8,5 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title', 'content', 'post_category']
     prepopulated_fields = {'slug': ('title',)}
     
-
-
 admin.site.register(Post, PostAdmin)
-admin.site.register((Categorie, Contact, Comment))
+admin.site.register(Categorie, Contact, Comment)
