@@ -160,3 +160,6 @@ TINYMCE_DEFAULT_CONFIG = {
     'skin': "oxide-dark",
     'content_css': "dark"
 }
+
+import django_heroku
+django_heroku.settings(locals())
